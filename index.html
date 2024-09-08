@@ -6,11 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>hustle.ai</title>
   <script type="module" src="/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -126,78 +131,123 @@
                 <div class="button-container">
                   <button class="btn-download">See an Example Video <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1 size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-1"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></button>
                   <button class="btn-explore">Start Exploring <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down ml-1 size-4"><path d="m6 9 6 6 6-6"></path></svg></button>
-              </div>
+                </div>
+
+                <br><br><br>
+
+                <video
+                  id="my-video"
+                  class="video-js vjs-theme-city"
+                  controls
+                  preload="auto"
+                  width="640"
+                  height="264"
+                  poster="MY_VIDEO_POSTER.jpg"
+                  data-setup="{}"
+                >
+                  <source src="sigmer.mp4" type="video/mp4" />
+                  <source src="MY_VIDEO.webm" type="video/webm" />
+                  <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a
+                    web browser that
+                    <a href="https://videojs.com/html5-video-support/" target="_blank"
+                      >supports HTML5 video</a
+                    >
+                  </p>
+                </video>
+
               </div>
 
-              
+
               <main>
 
-                <div class="enterThings">
-                
-                    <div class="navbar">
-                      <a id="textLink" onclick="showContent('textContent')">Text</a>
-                      <a id="textLink" onclick="showContent('pdfContent')">PDF</a>
-                      <a id="imageLink" onclick="showContent('imageContent')">Image</a>
+                <div class="swiper mySwiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                    <div class="swiper-slide">Slide 5</div>
+                    <div class="swiper-slide">Slide 6</div>
+                    <div class="swiper-slide">Slide 7</div>
+                    <div class="swiper-slide">Slide 8</div>
+                    <div class="swiper-slide">Slide 9</div>
+                  </div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-pagination"></div>
+                  <div class="autoplay-progress">
+                    <svg viewBox="0 0 48 48">
+                      <circle cx="24" cy="24" r="20"></circle>
+                    </svg>
+                    <span></span>
+                  </div>
+                </div>   
+
+                  <div class="enterThings">
+                  
+                      <div class="navbar">
+                        <a id="textLink" onclick="showContent('textContent')">Text</a>
+                        <a id="textLink" onclick="showContent('pdfContent')">PDF</a>
+                        <a id="imageLink" onclick="showContent('imageContent')">Image</a>
+                      </div>
+                      
+                      <div id="textContent" class="content active">
+                      <h2>Text Content</h2>
+                      <form>
+                        <div class="text-prompt-box">
+                          <label>
+                            <textarea name="textPrompt" placeholder="enter your assignment details here"></textarea>
+                          </label>
+                          <br>
+                          <div class="buttons">
+                      <p class="textOutput">(Results will appear here)</p>
                     </div>
                     
-                    <div id="textContent" class="content active">
-                    <h2>Text Content</h2>
-                    <form>
-                      <div class="text-prompt-box">
-                        <label>
-                          <textarea name="textPrompt" placeholder="enter your assignment details here"></textarea>
+                    <div id="pdfContent" class="content">
+                      <h2>PDF Content</h2>
+                      <form>
+                        <label for="pdfInput" class="custom-file-upload">
+                          <span>Upload PDF</span> 
                         </label>
-                        <br>
-                        <div class="buttons">
-                    <p class="textOutput">(Results will appear here)</p>
-                  </div>
-                  
-                  <div id="pdfContent" class="content">
-                    <h2>PDF Content</h2>
-                    <form>
-                      <label for="pdfInput" class="custom-file-upload">
-                        <span>Upload PDF</span> 
-                      </label>
-                      <input type="file" id="pdfInput" accept=".pdf" hidden> <!-- MAKE IT ACCEPT DOCX -->
-                      <br> <br>
-                      <div class="prompt-box">
-                        <label>
-                          <input style="text-align: center;" name="pdfPrompt" placeholder="enter your assignment details here" type="text">
-                        </label>
-                        <br>
-                        <button type="submit">Go</button>
-                      </div>
-                    </form>
-                    <p class="pdfOutput">(Results will appear here)</p>
-                  </div>
-                  
-                  
-                  <div id="imageContent" class="content">
-                    <h2>Image Content</h2>
-                    <form>
-                      <div class="image-picker">
-                        <label for="imageInput" class="custom-file-upload">
-                          <span>Upload Image</span>
-                        </label>
-                        <input type="file" id="imageInput" accept=".png, .jpg, .jpeg" hidden>
+                        <input type="file" id="pdfInput" accept=".pdf" hidden> <!-- MAKE IT ACCEPT DOCX -->
                         <br> <br>
-                      </div>
-                      <div class="prompt-box">
-                        <label>
-                          <input name="prompt" placeholder="enter your assignment details here" type="text" value="">
-                        </label>
-                        <br>
-                        <button type="submit">Go</button>
-                      </div>
-                    </form>
-                    <p class="output">(Results will appear here)</p>
-                  </div>
+                        <div class="prompt-box">
+                          <label>
+                            <input style="text-align: center;" name="pdfPrompt" placeholder="enter your assignment details here" type="text">
+                          </label>
+                          <br>
+                          <button type="submit">Go</button>
+                        </div>
+                      </form>
+                      <p class="pdfOutput">(Results will appear here)</p>
+                    </div>
+                    
+                    
+                    <div id="imageContent" class="content">
+                      <h2>Image Content</h2>
+                      <form>
+                        <div class="image-picker">
+                          <label for="imageInput" class="custom-file-upload">
+                            <span>Upload Image</span>
+                          </label>
+                          <input type="file" id="imageInput" accept=".png, .jpg, .jpeg" hidden>
+                          <br> <br>
+                        </div>
+                        <div class="prompt-box">
+                          <label>
+                            <input name="prompt" placeholder="enter your assignment details here" type="text" value="">
+                          </label>
+                          <br>
+                          <button type="submit">Go</button>
+                        </div>
+                      </form>
+                      <p class="output">(Results will appear here)</p>
+                    </div>
 
-              </div>
-              
-              
-              
-                <p style="text-align: center;">prompt AI to sort into different headings <br> possible utilisation of flow to-do list within calendar </p>
+                </div>
+                
+                  <p style="text-align: center;">prompt AI to sort into different headings <br> possible utilisation of flow to-do list within calendar </p>
               </main>
               
 
@@ -208,11 +258,11 @@
           </div>
         </div>
       </div>
-    <main>
-
 </body>
 </html>
 
+
+<!-- ANNOYING AHH SCRIPTS THAT ONLY WORK IN HTML -->
 
 <script>
   function showContent(contentId) {
@@ -226,4 +276,31 @@
       const selectedContent = document.getElementById(contentId);
       selectedContent.classList.add('active');
   }
+</script>
+
+<script>
+  const progressCircle = document.querySelector(".autoplay-progress svg");
+  const progressContent = document.querySelector(".autoplay-progress span");
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    on: {
+      autoplayTimeLeft(s, time, progress) {
+        progressCircle.style.setProperty("--progress", 1 - progress);
+        progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+      }
+    }
+  });
 </script>
