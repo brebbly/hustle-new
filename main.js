@@ -227,7 +227,7 @@ const Star = class {
   }
   
   specificBlue(){
-    return "#113768)";
+    return "#113768";
   }
 
   randomMinus() {
